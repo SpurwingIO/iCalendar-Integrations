@@ -4,7 +4,7 @@ const nodemailer = require('nodemailer');
 const Ical = require('ical-generator');
 const bodyParser = require('body-parser');
 const app = express();
-const port = 1524;
+const port = 1524; // change
 
 const Config = require('./config.js');
 if (! Object.values(Config.organizer).every(x => x.length > 1)) throw 'incomplete config';
