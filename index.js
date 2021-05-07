@@ -39,8 +39,8 @@ router.get(ROOT + '/appointment', (req, res) => {
     let EndDate = new Date(req.query.end);
     let Summary = 'Spurwing Demo Appointment'; // change
     let Subject = Summary; // change
-    let Text = ''; // change
-    sendMail(To, StartDate, EndDate, Subject, Text, Summary, null)
+    let Html = Config.email.html; // change
+    sendMail(To, StartDate, EndDate, Subject, Html, Summary, null)
 
     res.send({success:1})
 });
@@ -91,14 +91,15 @@ const transporter = nodemailer.createTransport({
   }
 });
 
-function sendMail(Attendees, StartDate, EndDate, Subject, Text, Summary, Description) {
+function sendMail(Attendees, StartDate, EndDate, Subject, Html, Summary, Description) {
   let ical = getIcal(StartDate, EndDate, Summary, Description, null, null, Attendees);
   
   const mailOptions = {
     from: Config.organizer.email,
     to:   Attendees.map(x => x.email),
     subject: Subject,
-    text: Text,
+    text: Html.replace(/<[^>]*>?/gm, ''),
+    html: Html,
     icalEvent: {
       content: ical.toString()
     }
