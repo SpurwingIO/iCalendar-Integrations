@@ -1,7 +1,7 @@
 # iCalendar Integrations
 This repository illustrates how you can use the iCalendar Protocol to schedule appointments, meetings and process bookings.
 
-![image](https://user-images.githubusercontent.com/9488406/119051345-56be3780-b9c3-11eb-8f95-fadd8669fe44.png)
+![image](https://user-images.githubusercontent.com/9488406/119051800-ed8af400-b9c3-11eb-861c-2a4f6d161c94.png)
 
 This NodeJS implemenation allows you to create iCalendar events and send them out by email to all attendees. These events are processed by all modern email systems (Gmail, Outlook, etc.) and look something like this:
 
