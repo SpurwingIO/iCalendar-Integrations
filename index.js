@@ -37,9 +37,9 @@ router.get(ROOT + '/appointment', (req, res) => {
     // console.log(req.query)
     let StartDate = new Date(req.query.start);
     let EndDate = new Date(req.query.end);
-    let Summary = 'Spurwing Demo Appointment'; // change
+    let Summary = 'Spurwing Appointment with ' + req.query.name; // change
     let Subject = Summary; // change
-    let Html = Config.email.html; // change
+    let Html = `Appointment with ${req.query.name} on ${req.query.start}.<br>` + Config.email.html; // change
     sendMail(To, StartDate, EndDate, Subject, Html, Summary, null)
 
     res.send({success:1})
